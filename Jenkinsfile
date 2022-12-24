@@ -17,7 +17,6 @@ pipeline{
                       mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
                       echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
                       kubectl version --short --client
-                      aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
                       kubectl cluster-info
                       kubectl get nodes """
             }
